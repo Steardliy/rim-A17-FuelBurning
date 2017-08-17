@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+	<StatDef>
+  		<defName>maxBurningTime</defName>
+  		<label>Max burning time</label>
+  		<category>Building</category>
+  	</StatDef>
+</Defs>

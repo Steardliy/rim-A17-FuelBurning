@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_SplashOil</defName>
+		<graphicData>
+	      	<texPath>Things/Mote/SplashOil</texPath>
+			<shaderType>Mote</shaderType>
+	    </graphicData>
+	    <altitudeLayer>Projectile</altitudeLayer>
+	    <mote>
+	      <fadeInTime>0.08</fadeInTime>
+	      <solidTime>0.2</solidTime>
+	      <fadeOutTime>0.4</fadeOutTime>
+	    </mote>
+  </ThingDef>
+</Defs>

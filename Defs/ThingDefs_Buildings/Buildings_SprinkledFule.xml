@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="SprinkledFuelBase" ParentName="BuildingBase" Abstract="True">
+    	<category>Building</category>
+    	<thingClass>FuelBurning.Building_SprinkledFuel</thingClass>
+    	<selectable>true</selectable>
+    	<drawerType>MapMeshOnly</drawerType>
+    	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    	<useHitPoints>false</useHitPoints>
+    	<rotatable>false</rotatable>
+    	<pathCost>20</pathCost>
+    	<stealable>false</stealable>
+    	<neverMultiSelect>true</neverMultiSelect>
+    	<soundImpactDefault>MeleeHit_Metal_Sharp</soundImpactDefault>
+    	<placeWorkers>
+    		<li>FuelBurning.PlaceWorker_SprinkledFuel</li>
+    	</placeWorkers>
+    	<alwaysHaulable>false</alwaysHaulable>
+    	<designateHaulable>false</designateHaulable>
+    	
+    	<staticSunShadowHeight>0.02</staticSunShadowHeight>
+    	<building>
+    		<ai_chillDestination>false</ai_chillDestination>
+			<isInert>true</isInert>
+			<ignoreNeedsPower>true</ignoreNeedsPower>
+			<isEdifice>false</isEdifice>
+			<expandHomeArea>false</expandHomeArea>
+			<repairable>false</repairable>
+    	</building>
+    	<tradeNeverStack>true</tradeNeverStack>
+    	<blueprintGraphicData>
+    		<texPath>Things/Building/Linked/SprinkledFuels/SprinkledFuel_Blueprint_Atlas</texPath>
+    	</blueprintGraphicData>
+    	<altitudeLayer>MoteLow</altitudeLayer>
+    	<passability>Standable</passability>
+    	<blockWind>false</blockWind>
+    	<coversFloor>true</coversFloor>
+    	<castEdgeShadows>false</castEdgeShadows>
+    	<placingDraggableDimensions>2</placingDraggableDimensions>
+    	<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    	<designationCategory>Security</designationCategory>
+    	<blockLight>false</blockLight>
+    	<blockPlants>true</blockPlants>
+    	<canOverlapZones>true</canOverlapZones>
+    	<filthLeaving>FilthAsh</filthLeaving>
+    	<TickerType>Normal</TickerType>
+    	
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="SprinkledFuelBase">
+		<defName>SprinkledFuelSmall</defName>
+		<label>Sprinkled fuel Small</label>
+		<description>It burns very well and burns out quickly.</description>
+    	<fillPercent>0.001</fillPercent>
+    	<pathCost>0</pathCost>
+		<graphicData>
+      		<texPath>Things/Building/Linked/SprinkledFuels/SprinkledFuel_Small_Atlas</texPath>
+      		<graphicClass>Graphic_Single</graphicClass>
+      		<shaderType>Transparent</shaderType>
+      		<linkType>Basic</linkType>
+      		<linkFlags>
+        		<li>Custom4</li>
+      		</linkFlags>
+      		<drawSize>(1,1)</drawSize>
+    	</graphicData>
+    	<constructEffect>SprinklingOil_ShortTime</constructEffect>
+    	<uiIconPath>Things/Building/Linked/SprinkledFuels/SprinkledFuel_Small_MenuIcon</uiIconPath>
+		<statBases>
+			<Flammability>1.0</Flammability>
+			<WorkToBuild>20</WorkToBuild>
+			<Beauty>-5</Beauty>
+			<maxBurningTime>3</maxBurningTime>
+		</statBases>
+		<costList>
+      		<Chemfuel>1</Chemfuel>
+    	</costList>
+    	<Size>(1,1)</Size>
+    	<comps>
+    		<li Class="FuelBurning.CompProperties_FlammableLink">
+    			<compClass>FuelBurning.FlammableLinkComp</compClass>
+        		<connectionID>1</connectionID>
+        		<ignitionDef>Ignition_Small</ignitionDef>
+        	</li>
+    	</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="SprinkledFuelBase">
+		<defName>SprinkledFuelMedium</defName>
+		<label>Sprinkled fuel Medium</label>
+		<description>This is a mixture of wood and fuel. It will burn well.</description>
+    	<fillPercent>0.005</fillPercent>
+    	<pathCost>10</pathCost>
+		<graphicData>
+      		<texPath>Things/Building/Linked/SprinkledFuels/SprinkledFuel_Medium_Atlas</texPath>
+      		<graphicClass>Graphic_Single</graphicClass>
+      		<linkType>Basic</linkType>
+      		<shaderType>Transparent</shaderType>
+      		<linkFlags>
+        		<li>Custom4</li>
+      		</linkFlags>
+      		<drawSize>(1,1)</drawSize>
+    	</graphicData>
+    	<constructEffect>SprinklingOil_ShortTime</constructEffect>
+    	<uiIconPath>Things/Building/Linked/SprinkledFuels/SprinkledFuel_Medium_MenuIcon</uiIconPath>
+		<statBases>
+			<Flammability>1.0</Flammability>
+			<WorkToBuild>50</WorkToBuild>
+			<Beauty>-10</Beauty>
+			<maxBurningTime>15</maxBurningTime>
+		</statBases>
+		<costList>
+      		<Chemfuel>1</Chemfuel>
+      		<WoodLog>1</WoodLog>
+    	</costList>
+    	<Size>(1,1)</Size>
+    	<comps>
+    		<li Class="FuelBurning.CompProperties_FlammableLink">
+    			<compClass>FuelBurning.FlammableLinkComp</compClass>
+        		<connectionID>1</connectionID>
+        		<ignitionDef>Ignition_Medium</ignitionDef>
+        	</li>
+    	</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="SprinkledFuelBase">
+		<defName>SprinkledFuelLarge</defName>
+		<label>Sprinkled fuel Large</label>
+		<description>It keeps burning for a long time but is hard to burn. Sometimes it explodes.</description>
+    	<fillPercent>0.009</fillPercent>
+    	<pathCost>20</pathCost>
+		<graphicData>
+      		<texPath>Things/Building/Linked/SprinkledFuels/SprinkledFuel_Large_Atlas</texPath>
+      		<graphicClass>Graphic_Single</graphicClass>
+      		<shaderType>Transparent</shaderType>
+      		<linkType>Basic</linkType>
+      		<linkFlags>
+        		<li>Custom4</li>
+      		</linkFlags>
+      		<drawSize>(1,1)</drawSize>
+    	</graphicData>
+    	<constructEffect>SprinklingOil_LongTime</constructEffect>
+    	<uiIconPath>Things/Building/Linked/SprinkledFuels/SprinkledFuel_Large_MenuIcon</uiIconPath>
+		<statBases>
+			<Flammability>1.0</Flammability>
+			<WorkToBuild>300</WorkToBuild>
+			<Beauty>-15</Beauty>
+			<maxBurningTime>40</maxBurningTime>
+		</statBases>
+		<costList>
+      		<Chemfuel>2</Chemfuel>
+      		<WoodLog>2</WoodLog>
+    	</costList>
+    	<Size>(1,1)</Size>
+    	<comps>
+    		<li Class="FuelBurning.CompProperties_FlammableLink">
+    			<compClass>FuelBurning.FlammableLinkComp</compClass>
+        		<connectionID>1</connectionID>
+        		<ignitionDef>Ignition_Large</ignitionDef>
+        	</li>
+        	<li Class="CompProperties_Explosive">
+        		<explosiveRadius>1.5</explosiveRadius>
+        		<explosiveDamageType>Flame</explosiveDamageType>
+        		<chanceNeverExplodeFromDamage>0.015</chanceNeverExplodeFromDamage>
+      		</li>
+    	</comps>
+	</ThingDef>
+
+</Defs>
