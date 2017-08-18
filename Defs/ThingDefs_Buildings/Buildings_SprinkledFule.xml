@@ -51,8 +51,8 @@
 	
 	<ThingDef ParentName="SprinkledFuelBase">
 		<defName>SprinkledFuelSmall</defName>
-		<label>Sprinkled fuel Small</label>
-		<description>It burns very well and burns out quickly.</description>
+		<label>Sprinkle fuel(Small)</label>
+		<description>Burns up by slight impact, and burns out quickly. It can be used as a fuse.</description>
     	<fillPercent>0.001</fillPercent>
     	<pathCost>0</pathCost>
 		<graphicData>
@@ -71,7 +71,7 @@
 			<Flammability>1.0</Flammability>
 			<WorkToBuild>20</WorkToBuild>
 			<Beauty>-5</Beauty>
-			<maxBurningTime>3</maxBurningTime>
+			<BurningTime>2</BurningTime>
 		</statBases>
 		<costList>
       		<Chemfuel>1</Chemfuel>
@@ -88,7 +88,7 @@
 	
 	<ThingDef ParentName="SprinkledFuelBase">
 		<defName>SprinkledFuelMedium</defName>
-		<label>Sprinkled fuel Medium</label>
+		<label>Sprinkle fuel(Medium)</label>
 		<description>This is a mixture of wood and fuel. It will burn well.</description>
     	<fillPercent>0.005</fillPercent>
     	<pathCost>10</pathCost>
@@ -108,7 +108,7 @@
 			<Flammability>1.0</Flammability>
 			<WorkToBuild>50</WorkToBuild>
 			<Beauty>-10</Beauty>
-			<maxBurningTime>15</maxBurningTime>
+			<BurningTime>15</BurningTime>
 		</statBases>
 		<costList>
       		<Chemfuel>1</Chemfuel>
@@ -126,8 +126,8 @@
 	
 	<ThingDef ParentName="SprinkledFuelBase">
 		<defName>SprinkledFuelLarge</defName>
-		<label>Sprinkled fuel Large</label>
-		<description>It keeps burning for a long time but is hard to burn. Sometimes it explodes.</description>
+		<label>Sprinkle fuel(Large)</label>
+		<description>Keeps burning for a long time but is hard to burn. Sometimes it explodes when it burns..</description>
     	<fillPercent>0.009</fillPercent>
     	<pathCost>20</pathCost>
 		<graphicData>
@@ -146,7 +146,7 @@
 			<Flammability>1.0</Flammability>
 			<WorkToBuild>300</WorkToBuild>
 			<Beauty>-15</Beauty>
-			<maxBurningTime>40</maxBurningTime>
+			<BurningTime>40</BurningTime>
 		</statBases>
 		<costList>
       		<Chemfuel>2</Chemfuel>

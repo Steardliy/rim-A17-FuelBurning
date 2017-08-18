@@ -2,8 +2,8 @@
 
 <Defs>
 	<StatDef>
-  		<defName>maxBurningTime</defName>
-  		<label>Max burning time</label>
+  		<defName>BurningTime</defName>
+  		<label>Burning times</label>
   		<category>Building</category>
   	</StatDef>
 </Defs>

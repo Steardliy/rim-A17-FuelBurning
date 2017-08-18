@@ -14,11 +14,11 @@ SoundDefのタグ詳細
             <clipFolderPath>string　パス指定。Soundsフォルダがカレント。Things/Building/〇〇（拡張子抜きの音源名）の様に指定。mp3は読み込めたがwavだと鳴らなくなる事が多々
           </li>
         </grains>
-        <volumeRange>　ボリュームクラス
+        <volumeRange>　ボリューム
           <min>float　最小。1.0が基準。音源が再生される度に最大と最小の範囲でランダムに調節される。
           <max>float　最大
         </volumeRange>
-        <pitchRange>　ピッチクラス
+        <pitchRange>　ピッチ
           <min>float　同上
           <max>float　
         </pitchRange>

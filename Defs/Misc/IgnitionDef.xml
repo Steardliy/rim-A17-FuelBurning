@@ -5,9 +5,9 @@
 		<defName>Ignition_Small</defName>
 		<spreadPower>2</spreadPower>
 		<firstFireSize>0.6</firstFireSize>
-		<maxHeatCapacity>2</maxHeatCapacity>
+		<maxHeatCapacity>4</maxHeatCapacity>
 		<fireRemains>false</fireRemains>
-		<easeCooling>0.008</easeCooling>
+		<easeCooling>0.001</easeCooling>
 		<baseIgnitionChance>0.8</baseIgnitionChance>
 		
   		<multiplierDirect>
@@ -29,19 +29,19 @@
 			</li>
 			<li>
 				<damageDef>Cut</damageDef>
-				<multiplier>0.12</multiplier>
+				<multiplier>0.16</multiplier>
 			</li>
 			<li>
 				<damageDef>Blunt</damageDef>
-				<multiplier>0.06</multiplier>
+				<multiplier>0.1</multiplier>
 			</li>
 			<li>
 				<damageDef>Arrow</damageDef>
-				<multiplier>0.2</multiplier>
+				<multiplier>0.3</multiplier>
 			</li>
 			<li>
 				<damageDef>Stab</damageDef>
-				<multiplier>0.12</multiplier>
+				<multiplier>0.16</multiplier>
 			</li>
         </multiplierDirect>
         
@@ -89,53 +89,53 @@
 			</li>
 			<li>
 				<damageDef>Bullet</damageDef>
-				<multiplier>6</multiplier>
+				<multiplier>6.5</multiplier>
 			</li>
 			<li>
 				<damageDef>Cut</damageDef>
-				<multiplier>1</multiplier>
+				<multiplier>1.7</multiplier>
 			</li>
 			<li>
 				<damageDef>Blunt</damageDef>
-				<multiplier>0.5</multiplier>
+				<multiplier>0.9</multiplier>
 			</li>
 			<li>
 				<damageDef>Arrow</damageDef>
-				<multiplier>2</multiplier>
+				<multiplier>2.5</multiplier>
 			</li>
 			<li>
 				<damageDef>Stab</damageDef>
-				<multiplier>1</multiplier>
+				<multiplier>1.7</multiplier>
 			</li>
         </multiplierDirect>
         
         <multiplierSparks>
   			<li>
 				<damageDef>Flame</damageDef>
-				<multiplier>16</multiplier>
+				<multiplier>18</multiplier>
 			</li>
 			<li>
 				<damageDef>Bomb</damageDef>
-				<multiplier>7</multiplier>
+				<multiplier>8</multiplier>
 			</li>
 			<li>
 				<damageDef>Burn</damageDef>
-				<multiplier>16</multiplier>
+				<multiplier>18</multiplier>
 			</li>
 			<li>
 				<damageDef>Bullet</damageDef>
-				<multiplier>4.5</multiplier>
+				<multiplier>5.5</multiplier>
 			</li>
         </multiplierSparks>
   	</FuelBurning.IgnitionDef>
   	
   	<FuelBurning.IgnitionDef>
 		<defName>Ignition_Large</defName>
-		<spreadPower>3.5</spreadPower>
+		<spreadPower>3.2</spreadPower>
 		<firstFireSize>1.5</firstFireSize>
-		<maxHeatCapacity>700</maxHeatCapacity>
+		<maxHeatCapacity>900</maxHeatCapacity>
 		<fireRemains>true</fireRemains>
-		<easeCooling>0.006</easeCooling>
+		<easeCooling>0.01</easeCooling>
 		<baseIgnitionChance>0.25</baseIgnitionChance>
 		
   		<multiplierDirect>
@@ -153,42 +153,42 @@
 			</li>
 			<li>
 				<damageDef>Bullet</damageDef>
-				<multiplier>7</multiplier>
+				<multiplier>9</multiplier>
 			</li>
 			<li>
 				<damageDef>Cut</damageDef>
-				<multiplier>1.6</multiplier>
+				<multiplier>2.5</multiplier>
 			</li>
 			<li>
 				<damageDef>Blunt</damageDef>
-				<multiplier>1</multiplier>
+				<multiplier>1.6</multiplier>
 			</li>
 			<li>
 				<damageDef>Arrow</damageDef>
-				<multiplier>2.8</multiplier>
+				<multiplier>4</multiplier>
 			</li>
 			<li>
 				<damageDef>Stab</damageDef>
-				<multiplier>1.6</multiplier>
+				<multiplier>2.5</multiplier>
 			</li>
         </multiplierDirect>
         
         <multiplierSparks>
   			<li>
 				<damageDef>Flame</damageDef>
-				<multiplier>40</multiplier>
+				<multiplier>60</multiplier>
 			</li>
 			<li>
 				<damageDef>Bomb</damageDef>
-				<multiplier>15</multiplier>
+				<multiplier>30</multiplier>
 			</li>
 			<li>
 				<damageDef>Burn</damageDef>
-				<multiplier>40</multiplier>
+				<multiplier>60</multiplier>
 			</li>
 			<li>
 				<damageDef>Bullet</damageDef>
-				<multiplier>6.5</multiplier>
+				<multiplier>8</multiplier>
 			</li>
         </multiplierSparks>
   	</FuelBurning.IgnitionDef>
