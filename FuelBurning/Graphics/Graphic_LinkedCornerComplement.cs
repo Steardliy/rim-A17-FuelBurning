@@ -130,7 +130,7 @@ namespace FuelBurning
             Material mat = MaterialPool.MatFrom(path, ShaderDatabase.Transparent);
             if(mat == null)
             {
-                Log.Error(DebugLog.Sign() + "Could not find a texture. path \"" + this.compTexPath + "\"");
+                Log.Error(DebugLog.Sign() + "Could not found the texture. path \"" + this.compTexPath + "\"");
                 mat = BaseContent.BadMat;
             }
             return mat;

@@ -14,6 +14,10 @@ namespace FuelBurning
 
     class FlammableLinkComp : ThingComp
     {
+        private const float CorrectIgnitionChance = 0.7f;
+        private const float CorrectWeatherFactorCooling = -2.0f;
+        private const float CorrectWeatherFactorHeating = 0.3f;
+        
         private CompProperties_FlammableLink compDef;
         private bool burningNowInt;
         public bool BurningNow
@@ -54,7 +58,7 @@ namespace FuelBurning
             else
             {
                 this.BurningNow = false;
-                this.AmountOfHeat -= this.WeatherFactor(this.compDef.ignitionDef.easeCooling, -2f);
+                this.AmountOfHeat -= this.WeatherFactor(this.compDef.ignitionDef.easeCooling, CorrectWeatherFactorCooling);
                 if (this.AmountOfHeat < 0)
                 {
                     this.AmountOfHeat = 0;
@@ -67,7 +71,7 @@ namespace FuelBurning
             {
                 return SparksFlyResult.ZeroValue;
             }
-            this.AmountOfHeat += this.WeatherFactor(sp, 0.3f);
+            this.AmountOfHeat += this.WeatherFactor(sp, CorrectWeatherFactorHeating);
             if (this.BurningNow)
             {
                 Fire curFire = base.parent.Map.thingGrid.ThingAt<Fire>(base.parent.Position);
@@ -89,7 +93,7 @@ namespace FuelBurning
         {
             float max = this.compDef.ignitionDef.maxHeatCapacity;
             float now = this.AmountOfHeat;
-            float chance = this.compDef.ignitionDef.baseIgnitionChance + ((now / max) - 0.7f);
+            float chance = this.compDef.ignitionDef.baseIgnitionChance + ((now / max) - CorrectIgnitionChance);
             return Rand.Chance(chance);
         }
         protected virtual void TryBurning(float fireSize)
