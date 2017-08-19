@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <SprinkledFuelSmall.label>燃料散布（小）</SprinkledFuelSmall.label>
+  <SprinkledFuelSmall.label>燃料散布 (希釈)</SprinkledFuelSmall.label>
   <SprinkledFuelSmall.description>簡単な衝撃ですぐ燃え上がりすぐに燃え尽きます。主に導火線として使用されます。</SprinkledFuelSmall.description>
 
-  <SprinkledFuelMedium.label>燃料散布 （中）</SprinkledFuelMedium.label>
+  <SprinkledFuelMedium.label>燃料散布</SprinkledFuelMedium.label>
   <SprinkledFuelMedium.description>燃料に木材を混ぜたものです。よく燃えます。</SprinkledFuelMedium.description>
 
-  <SprinkledFuelLarge.label>燃料散布（大）</SprinkledFuelLarge.label>
+  <SprinkledFuelLarge.label>燃料散布 (濃縮)</SprinkledFuelLarge.label>
   <SprinkledFuelLarge.description>非常に長い間燃え続けますが、火がつきにくいです。燃え始めると時々爆発します。</SprinkledFuelLarge.description>
   
 </LanguageData>

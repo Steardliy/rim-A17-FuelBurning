@@ -51,7 +51,7 @@
 	
 	<ThingDef ParentName="SprinkledFuelBase">
 		<defName>SprinkledFuelSmall</defName>
-		<label>Sprinkle fuel(Small)</label>
+		<label>Sprinkle fuel(diluted)</label>
 		<description>Burns up by slight impact, and burns out quickly. It can be used as a fuse.</description>
     	<fillPercent>0.001</fillPercent>
     	<pathCost>0</pathCost>
@@ -88,7 +88,7 @@
 	
 	<ThingDef ParentName="SprinkledFuelBase">
 		<defName>SprinkledFuelMedium</defName>
-		<label>Sprinkle fuel(Medium)</label>
+		<label>Sprinkle fuel</label>
 		<description>This is a mixture of wood and fuel. It will burn well.</description>
     	<fillPercent>0.005</fillPercent>
     	<pathCost>10</pathCost>
@@ -126,8 +126,8 @@
 	
 	<ThingDef ParentName="SprinkledFuelBase">
 		<defName>SprinkledFuelLarge</defName>
-		<label>Sprinkle fuel(Large)</label>
-		<description>Keeps burning for a long time but is hard to burn. Sometimes it explodes when it burns..</description>
+		<label>Sprinkle fuel(concentrated)</label>
+		<description>Keeps burning for a long time but is hard to ignite. Sometimes it explodes when it burns..</description>
     	<fillPercent>0.009</fillPercent>
     	<pathCost>20</pathCost>
 		<graphicData>
