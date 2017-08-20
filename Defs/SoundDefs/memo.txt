@@ -1,0 +1,65 @@
+SoundDefのタグ詳細(もっと正確な記述はDll内の「SoundDef」に英語で説明が入っています)
+個人的に試した事なので間違っていない保証はありませんのであしからず
+以下は　　<タグ名>値の型（デフォルト値：有効範囲、又は種類）：説明　　の形で記述
+List<〇〇>は要素を<li><li>で記述するとの同じ。""は空白文字。
+
+・<sustain>bool(false)　：継続的に音をループして鳴らすかどうか。
+　　　　　　　　　　　　　この値はEffecterDefでSubEffecter_Sustainer等、継続を前提にしたsubEffecterClassを指定した場合trueにしないとエラー
+・<context>enum(Any：Any,MapOnly,WorldOnly)　：音が鳴り得る場所。MapOnly＝マップを見てる時、WorldOnly＝ワールドマップを見てる時、Any＝どこでも
+・<eventNames>List<string>　：このサウンドの識別子を複数指定できる。<eventNames />や省略した場合defNameが識別子となる
+・<maxVoices>int(4)　：同時再生できる最大数。後述のmaxSimultaneousと違いどのような状況でもここで指定した数以上に音は鳴らない
+・<maxSimultaneous>int(3)　：瞬間的に同時再生できる最大数。砲撃や銃撃音が瞬間的に重なって再生された場合にとてもやかましいのでそれを軽減するパラメーター
+・<priorityMode>enum(PrioritizeNewest：PrioritizeNewest,PrioritizeNearest)　：サウンドがmaxVoicesで指定した以上同時に鳴った場合の優先度。
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　PrioritizeNewest＝より新しい音を再生、PrioritizeNearest＝より近い音を再生
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　例えばmaxVoicesが1の時、カメラにより近い爆発音を優先したい場合PrioritizeNearestを指定する
+・<slot>string("")　：このSoundDefが複数同時に再生されても一つだけ鳴る特別な音。別のSoundDefのdefNameを指定する。これはon-cameraでしか機能しない
+・<sustainStartSound>string("")　：継続開始時に一度だけ鳴る音。別のSoundDefのdefNameを指定する
+・<sustainStopSound>string("")　：継続終了時に鳴る音。同上
+・<sustainFadeoutTime>float(0)　：継続が終わった後にフェードアウトする残響。現実の秒数で指定する
+
+・<subSounds>　：ここから実際の音の定義するsubSoundDefのリスト。複数指定して音源を組み合わせることができる
+    <li>
+	・<name>string(UnnamedSubSoundDef)　：音の名前。特に必要ないなら省略可
+	・<onCamera>bool(false)　：カメラ上で鳴るか、どこでも鳴るか。この値はその他の要素と矛盾なく定義されている必要がある
+      	・<muteWhenPaused>bool(false)　：ポーズしたときに音が鳴るか
+        ・<grains>　：音源の指定。複数指定した場合は再生毎にランダムに一つ選ばれる。
+            <li Class="">　：ClassにはAudioGrain_Folder、AudioGrain_Clip、AudioGrain_Silenceを指定。通常はAudioGrain_Clipで後述のパス指定で音源名を指定すればいい
+            ・<clipFolderPath>string("")　：パス指定。Soundsフォルダがカレント。AudioGrain_Clipを指定した場合Things/Building/〇〇（拡張子抜きの音源名）の様に指定。
+　　　　　　　　　　　　　　　　　　　　　　音源フォーマットはwav、mp3、ogg。ただし、環境によってはwavはいいけどmp3だと再生されないといった事が起きるのでwav推奨。
+　　　　　　　　　　　　　　　　　　　　　　さらに細かいフォーマットの公式推奨はわからないが実体験として
+　　　　　　　　　　　　　　　　　　　　　　wavの場合：PCM Signed 16Bit Little-Endian 48000Hz monoral 768kb/sで上手くいった
+　　　　　　　　　　　　　　　　　　　　　　stereoだと音が一度しか再生されない等が起こったので不具合が出た場合フォーマットを疑ってみるのがいいかも
+          
+        ・<volumeRange>　：ボリューム。音源が再生される度に最大と最小の範囲でランダムに調節される。最小最大で3.5程度の開きがあると単調さが減っていい感じ
+            <min>float(50：0～100)　：最小（以下略）
+            <max>float(50：0～100)　：最大（以下略）
+        ・<pitchRange>　：ピッチ。同上
+            <min>float(1：0.05～2)　：
+            <max>float(1：0.05～2)　：
+	・<distRange>　：カメラとの距離感による音量の調節。minで指定した距離までカメラをズームしたとき音量が最大となり、
+　　　　　　　　　　　　 そこからズームアウトするとmaxで指定した距離に達するまで線形で音が小さくなる。ゲーム内1マスを1とした3次元ユークリッド距離
+	    <min>float(25：0～200)　：
+            <max>float(70：0～200)　：
+	・<repeatMode>(NeverLastHalf：Any,NeverTwice,NeverLastHalf)　：上記の<grains>が複数指定されていた場合、音源のリピート時に再び同じgrainsが選ばれるかどうかを制御する
+								　　 　NeverTwice＝直前に再生された音源は選ばれない
+								       NeverLastHalf＝音源の総数/2個前までに選ばれた音源は選ばれない
+	・<paramMappings>List<SoundParameterMapping>　：詳細不明。CoreのDefにも見当たらない
+							英語説明原文「Mappings between game parameters (like fire size or wind speed) and properties of the sound.」
+	・<filters>List<SoundFilter>　：サウンドに適用されるフィルター。使ったことないので詳細不明
+					英語説明原文「The filters to be applied to this sound.」
+	・<startDelayRange>　：音が内部で選ばれてから実際に再生されるまでの遅延
+	    <min>float(0)　：
+            <max>float(0)　：
+	・<sustainLoop>bool(true)　：trueの場合後述のsustainLoopDurationRangeが有効に。falseなら無効になり、それぞれの音源の長さちょうどで再生が終了する。
+        ・<sustainLoopDurationRange>　：音源ループの持続時間。最大と最小の範囲でランダムに調節される。この値の長さだけ、各音源が繰り返し再生される
+					<sustainLoop>をtrueにする必要がある
+            <min>float(9999：0～10)　：
+            <max>float(9999：0～10)　：
+        ・<sustainIntervalRange>　：次に音が鳴るまでの時間。数値をマイナス指定すると被せて音が鳴る。両方0にすると一定間隔で音が鳴るので音量設定以上に単調に聞こえる
+            <min>float(0：-2～2)　： 
+            <max>float(0：-2～2)　：
+        ・<sustainAttack>float(0：0～2)　：音の入りの強さ。各音は音量0で始まり、ここで指定した時間をかけて最大音量になる。0を指定すれば最初から最大音量
+	・<sustainSkipFirstAttack>bool(true)　：継続再生時、最初の一回目の音は上記の設定を無視するか否か
+        ・<sustainRelease>float(0：0～2)　音の抜け。ここで指定した時間をかけて音量0になる
+    </li>
+</subSounds>
