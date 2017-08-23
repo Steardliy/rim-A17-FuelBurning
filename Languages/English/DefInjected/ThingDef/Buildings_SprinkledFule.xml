@@ -2,12 +2,12 @@
 <LanguageData>
 
   <SprinkledFuelSmall.label>Sprinkled fuel (diluted)</SprinkledFuelSmall.label>
-  <SprinkledFuelSmall.description>Burns up by slight impact, and burns out quickly. It can be used as a fuse.</SprinkledFuelSmall.description>
+  <SprinkledFuelSmall.description>It burns up by slight impact, and burns out quickly. It can be used as a fuse.</SprinkledFuelSmall.description>
   
   <SprinkledFuelMedium.label>Sprinkled fuel</SprinkledFuelMedium.label>
   <SprinkledFuelMedium.description>This is a mixture of wood and fuel. It will burn well.</SprinkledFuelMedium.description>
 
   <SprinkledFuelLarge.label>Sprinkled fuel(concentrated)</SprinkledFuelLarge.label>
-  <SprinkledFuelLarge.description>Keeps burning for a long time but is hard to ignite. Sometimes it explodes when it burns.</SprinkledFuelLarge.description>
+  <SprinkledFuelLarge.description>It keeps burning for a long time but is hard to ignite. Sometimes it explodes when it burns.</SprinkledFuelLarge.description>
   
 </LanguageData>

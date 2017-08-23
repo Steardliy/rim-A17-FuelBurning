@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/DesignationCategoryDef[DefName="Security"]/specialDesignatorClasses</xpath>
+		<Value>
+			<li>FuelBurning.Designator_CleanFuel</li>
+		</Value>
+	</Operation>
+</Patch>

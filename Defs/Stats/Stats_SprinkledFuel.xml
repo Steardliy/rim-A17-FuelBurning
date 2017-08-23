@@ -3,7 +3,7 @@
 <Defs>
 	<StatDef>
   		<defName>BurningTime</defName>
-  		<label>Burning times</label>
+  		<label>Burning time</label>
   		<category>Building</category>
   	</StatDef>
 </Defs>

@@ -60,7 +60,7 @@ namespace FuelBurning
         {
             if (!respawningAfterLoad)
             {
-                this.InnerHitpoint = this.GetStatValue(BTF_StatsDefOf.BurningTime, true) * FlameDamagePerSec;
+                this.InnerHitpoint = this.GetStatValue(FB_StatsDefOf.BurningTime, true) * FlameDamagePerSec;
             }
             base.SpawnSetup(map, respawningAfterLoad);
         }

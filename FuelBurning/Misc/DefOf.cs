@@ -1,9 +1,10 @@
 ﻿using RimWorld;
+using Verse;
 
 namespace FuelBurning
 {
     [DefOf]
-    public static class BTF_StatsDefOf
+    public static class FB_StatsDefOf
     {
         public static StatDef BurningTime;
     }
