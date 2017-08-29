@@ -36,7 +36,7 @@ List<〇〇>は要素を<li></li>で記述するとの同じ。""は空白文字。
 	・<grains>　：音源の指定。複数指定した場合は再生毎にランダムに一つ選ばれる。
 	  <li Class="">　：ClassにはAudioGrain_Folder、AudioGrain_Clip、AudioGrain_Silenceを指定。通常はAudioGrain_Clipで後述のパス指定で音源名を指定すればいい
 
-            ・<clipPath>string("")、<clipFolderPath>string("")　：パス指定。前者はClipの時、後者はFolderの時。自作Modフォルダの「Sounds」フォルダがカレント。AudioGrain_Clipを指定した場合Things/Building/〇〇（拡張子抜きの音源名）の様に指定。音源フォーマットはwav、mp3、ogg。ただし、ユーザーの環境によってwavはいいけどmp3だと再生されないといった事が起きるのでwav推奨。さらに細かいフォーマットの公式推奨はわからないが、実体験としてwavの場合：PCM Signed 16Bit Little-Endian 48000Hz monoral 768kb/sで上手くいった。stereoだと音が一度しか再生されない等の不具合が起こったので上手くいかない場合フォーマットを疑ってみるのがいいかも
+            ・<clipPath>string("")、<clipFolderPath>string("")　：パス指定。前者はAudioGrain_Clipを指定した時、後者はFolderの時。自作Modフォルダの「Sounds」フォルダがカレント。AudioGrain_Clipを指定した場合Things/Building/〇〇（拡張子抜きの音源名）の様に指定。音源フォーマットはwav、mp3、ogg。ただし、ユーザーの環境によってwavはいいけどmp3だと再生されないといった事が起きるのでwav推奨。さらに細かいフォーマットの公式推奨はわからないが、実体験としてwavの場合：PCM Signed 16Bit Little-Endian 48000Hz monoral 768kb/sで上手くいった。stereoだと音が一度しか再生されない等の不具合が起こったので上手くいかない場合フォーマットを疑ってみるのがいいかも
           
         ・<volumeRange>　：ボリューム。音源が再生される度に最大と最小の範囲でランダムに調節される。最小最大で2.5程度の開きがあると単調さが減っていい感じ
             <min>float(50：0～100)　：最小（以下略）

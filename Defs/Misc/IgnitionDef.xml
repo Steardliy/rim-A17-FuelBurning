@@ -7,7 +7,7 @@
 		<firstFireSize>0.6</firstFireSize>
 		<maxHeatCapacity>4</maxHeatCapacity>
 		<fireRemains>false</fireRemains>
-		<easeCooling>0.001</easeCooling>
+		<easeCooling>0.002</easeCooling>
 		<baseIgnitionChance>0.8</baseIgnitionChance>
 		
   		<multiplierDirect>
@@ -93,19 +93,19 @@
 			</li>
 			<li>
 				<damageDef>Cut</damageDef>
-				<multiplier>1.7</multiplier>
+				<multiplier>2.0</multiplier>
 			</li>
 			<li>
 				<damageDef>Blunt</damageDef>
-				<multiplier>0.9</multiplier>
+				<multiplier>1.1</multiplier>
 			</li>
 			<li>
 				<damageDef>Arrow</damageDef>
-				<multiplier>2.5</multiplier>
+				<multiplier>3</multiplier>
 			</li>
 			<li>
 				<damageDef>Stab</damageDef>
-				<multiplier>1.7</multiplier>
+				<multiplier>2.0</multiplier>
 			</li>
         </multiplierDirect>
         
@@ -157,7 +157,7 @@
 			</li>
 			<li>
 				<damageDef>Cut</damageDef>
-				<multiplier>2.5</multiplier>
+				<multiplier>2.6</multiplier>
 			</li>
 			<li>
 				<damageDef>Blunt</damageDef>
@@ -169,7 +169,7 @@
 			</li>
 			<li>
 				<damageDef>Stab</damageDef>
-				<multiplier>2.5</multiplier>
+				<multiplier>2.8</multiplier>
 			</li>
         </multiplierDirect>
         
