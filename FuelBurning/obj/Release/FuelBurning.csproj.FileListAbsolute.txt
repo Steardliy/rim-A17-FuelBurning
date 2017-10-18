@@ -4,6 +4,6 @@ C:\Users\kuboc_000\Source\Repos\rim-A17-FuelBurning\FuelBurning\obj\Release\Fuel
 C:\Users\kuboc_000\Source\Repos\rim-A17-FuelBurning\FuelBurning\obj\Release\FuelBurning.pdb
 C:\GitLocal\rim-A17-FuelBurning\FuelBurning\bin\Release\FuelBurning.dll
 C:\GitLocal\rim-A17-FuelBurning\FuelBurning\bin\Release\FuelBurning.pdb
-C:\GitLocal\rim-A17-FuelBurning\FuelBurning\obj\Release\FuelBurning.csprojResolveAssemblyReference.cache
 C:\GitLocal\rim-A17-FuelBurning\FuelBurning\obj\Release\FuelBurning.dll
 C:\GitLocal\rim-A17-FuelBurning\FuelBurning\obj\Release\FuelBurning.pdb
+C:\GitLocal\rim-A17-FuelBurning\FuelBurning\obj\Release\FuelBurning.csproj.CoreCompileInputs.cache

@@ -14,9 +14,10 @@ namespace FuelBurning
         private const float FlameDamagePerSec = (FlameTick / FlameDamage) / 60f;
         private const int TicksCheckCellInterval = 20;
         private const float AttachSparksHeat = TicksCheckCellInterval * 2f;
-        private const float SparksRangeOrigin = 4.55f;
-        private const float SparksRangeDestination = 1.5f;
+        //private const float SparksRangeOrigin = 4.55f;
+        //private const float SparksRangeDestination = 1.5f;
 
+        private FlammableLinkComp flammableLinkcomp;
 
         private float innerHitpointInt;
         public float InnerHitpoint
@@ -42,34 +43,34 @@ namespace FuelBurning
             base.Tick();
             if(this.IsHashIntervalTick(TicksCheckCellInterval))
             {
-                FlammableLinkComp comp = base.GetComp<FlammableLinkComp>();
-                if (comp.BurningNow)
+                if (this.flammableLinkcomp == null || this.flammableLinkcomp.BurningNow)
                 {
                     return;
                 }
                 List<Thing> things = base.Map.thingGrid.ThingsListAt(base.Position);
                 for (int i = 0; i < things.Count; i++)
                 {
-                    this.CheckSparksFromPawn(things[i] as Pawn, comp);
-                    this.CheckOverlapBullet(things[i] as Bullet, comp);
+                    this.CheckSparksFromPawn(things[i] as Pawn);
+                    this.CheckBulletFire(things[i] as Mote);
+                    //this.CheckOverlapBullet(things[i] as Bullet);
                 }
             }
         }
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
+            base.SpawnSetup(map, respawningAfterLoad);
             if (!respawningAfterLoad)
             {
                 this.InnerHitpoint = this.GetStatValue(FB_StatsDefOf.BurningTime, true) * FlameDamagePerSec;
             }
-            base.SpawnSetup(map, respawningAfterLoad);
+            this.flammableLinkcomp = base.GetComp<FlammableLinkComp>();
         }
 
         public override void PreApplyDamage(DamageInfo dinfo, out bool absorbed)
         {
             absorbed = false;
-            FlammableLinkComp comp = this.TryGetComp<FlammableLinkComp>();
-            if (comp != null)
+            if (this.flammableLinkcomp != null)
             {
                 if (FireUtility.ContainsStaticFire(base.Position, base.Map))
                 {
@@ -85,16 +86,16 @@ namespace FuelBurning
                 }
                 else
                 {
-                    float heat = comp.HeatedByHitOf(dinfo);
-                    comp.TrySparksFly(heat);
-                    MoteUtility.DrawHeatedMote(comp.HeatRatio, base.DrawPos, base.Position, base.Map);
+                    float heat = flammableLinkcomp.HeatedByHitOf(dinfo);
+                    this.flammableLinkcomp.TrySparksFly(heat);
+                    MoteUtility.DrawHeatedMote(this.flammableLinkcomp.HeatRatio, base.DrawPos, base.Position, base.Map);
                 }
 #if DEBUG
-                Log.Message("pos:" + base.Position + " type:" + dinfo.Def.ToString() + " amount:" + dinfo.Amount + " sp:" + comp.HeatedByHitOf(dinfo) + " heat:" + comp.AmountOfHeat + " hp:" + this.InnerHitpoint);
+                Log.Message("pos:" + base.Position + " type:" + dinfo.Def.ToString() + " amount:" + dinfo.Amount + " sp:" + this.flammableLinkcomp.HeatedByHitOf(dinfo) + " heat:" + this.flammableLinkcomp.AmountOfHeat + " hp:" + this.InnerHitpoint);
 #endif
             }
         }
-        private void CheckSparksFromPawn(Pawn pawn, FlammableLinkComp comp)
+        private void CheckSparksFromPawn(Pawn pawn)
         {
             if (pawn == null)
             {
@@ -102,20 +103,52 @@ namespace FuelBurning
             }
             if (pawn.HasAttachment(ThingDefOf.Fire))
             {
-                if (comp.TrySparksFly(AttachSparksHeat) == SparksFlyResult.Undefine)
+                if (this.flammableLinkcomp.TrySparksFly(AttachSparksHeat) == SparksFlyResult.Undefine)
                 {
-                    MoteUtility.DrawHeatedMote(comp.HeatRatio, base.DrawPos, base.Position, base.Map);
+                    MoteUtility.DrawHeatedMote(this.flammableLinkcomp.HeatRatio, base.DrawPos, base.Position, base.Map);
                 }
             }
         }
-        private void CheckOverlapBullet(Bullet bullet, FlammableLinkComp comp)
+
+        private void CheckBulletFire(Mote mote)
+        {
+            if(mote == null)
+            {
+                return;
+            }
+            // Launch
+            if(mote.def == ThingDefOf.Mote_ShotFlash)
+            {
+                float heat = mote.exactScale.x * 4f;
+                if (this.flammableLinkcomp.TrySparksFly(heat) == SparksFlyResult.Undefine)
+                {
+                    MoteUtility.DrawHeatedMote(this.flammableLinkcomp.HeatRatio, base.DrawPos, base.Position, base.Map);
+                }
+#if DEBUG
+                Log.Message("Mote_ShotFlash base:" + base.DrawPos + " heat:" + heat + " cap:" + this.flammableLinkcomp.AmountOfHeat);
+#endif
+            }
+
+            // Impact
+            if (mote.def == ThingDefOf.Mote_ShotHit_Dirt)
+            {
+                if (this.flammableLinkcomp.TrySparksFly(80f) == SparksFlyResult.Undefine)
+                {
+                    MoteUtility.DrawHeatedMote(this.flammableLinkcomp.HeatRatio, base.DrawPos, base.Position, base.Map);
+                }
+#if DEBUG
+                Log.Message("Mote_ShotHit_Dirt base:" + base.DrawPos + " cap:" + this.flammableLinkcomp.AmountOfHeat);
+#endif
+            }
+        }
+
+        /*
+        private void CheckOverlapBullet(Bullet bullet)
         {
             if (bullet == null)
             {
                 return;
             }
-
-            
 
             FieldInfo originInfo = bullet.GetType().GetField("origin", BindingFlags.GetField | BindingFlags.Instance | BindingFlags.NonPublic);
             Vector3 origin = (Vector3)originInfo.GetValue(bullet);
@@ -125,10 +158,10 @@ namespace FuelBurning
             if (distanceSqr <= SparksRangeOrigin * SparksRangeOrigin)
             {
                 DamageInfo dinfo = new DamageInfo(bullet.def.projectile.damageDef, bullet.def.projectile.damageAmountBase);
-                float heat = comp.HeatedBySparksOf(dinfo);
-                if (comp.TrySparksFly(heat) == SparksFlyResult.Undefine)
+                float heat = this.flammableLinkcomp.HeatedBySparksOf(dinfo);
+                if (this.flammableLinkcomp.TrySparksFly(heat) == SparksFlyResult.Undefine)
                 {
-                    MoteUtility.DrawHeatedMote(comp.HeatRatio, base.DrawPos, base.Position, base.Map);
+                    MoteUtility.DrawHeatedMote(this.flammableLinkcomp.HeatRatio, base.DrawPos, base.Position, base.Map);
                 }
 #if DEBUG
                 Log.Message("Near Def:" + dinfo.Def.ToString() + " origin:" + origin + " base:" + base.DrawPos + " distanceSqr:" + distanceSqr);
@@ -143,16 +176,16 @@ namespace FuelBurning
             if (distanceSqr <= SparksRangeDestination * SparksRangeDestination)
             {
                 DamageInfo dinfo = new DamageInfo(bullet.def.projectile.damageDef, bullet.def.projectile.damageAmountBase);
-                float heat = comp.HeatedBySparksOf(dinfo);
-                if (comp.TrySparksFly(heat) == SparksFlyResult.Undefine)
+                float heat = this.flammableLinkcomp.HeatedBySparksOf(dinfo);
+                if (this.flammableLinkcomp.TrySparksFly(heat) == SparksFlyResult.Undefine)
                 {
-                    MoteUtility.DrawHeatedMote(comp.HeatRatio, base.DrawPos, base.Position, base.Map);
+                    MoteUtility.DrawHeatedMote(this.flammableLinkcomp.HeatRatio, base.DrawPos, base.Position, base.Map);
                 }
 #if DEBUG
                 Log.Message("Near Def:" + dinfo.Def.ToString() + " destination:" + destination + " base:" + base.DrawPos + " distanceSqr:" + distanceSqr);
 #endif
             }
-        }
+        }*/
         public override void ExposeData()
         {
             Scribe_Values.Look<float>(ref this.innerHitpointInt, "innerHitpointInt", 10);

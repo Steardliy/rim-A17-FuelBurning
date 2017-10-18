@@ -8,3 +8,4 @@ C:\GitLocal\rim-A17-FuelBurning\FuelBurning\bin\Debug\FuelBurning.pdb
 C:\GitLocal\rim-A17-FuelBurning\FuelBurning\obj\Debug\FuelBurning.csprojResolveAssemblyReference.cache
 C:\GitLocal\rim-A17-FuelBurning\FuelBurning\obj\Debug\FuelBurning.dll
 C:\GitLocal\rim-A17-FuelBurning\FuelBurning\obj\Debug\FuelBurning.pdb
+C:\GitLocal\rim-A17-FuelBurning\FuelBurning\obj\Debug\FuelBurning.csproj.CoreCompileInputs.cache
